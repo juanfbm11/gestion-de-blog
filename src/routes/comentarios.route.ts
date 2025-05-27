@@ -1,13 +1,11 @@
 import  Express  from "express";
-import * as blogscontrollers from "../controllers/blogs.controllers";
-import { blogs } from "../models/blogs";
+import * as comentarioscontrollers from "../controllers/comentarios.controllers";
+import {comentarios} from "../models/comentarios";
 
-
-
-const router =  Express.Router();
+const router = Express.Router();
 
 router.get('/', (rq, rs) => {
-    blogscontrollers.GetBlogs()
+    comentarioscontrollers.Getcomentarios()
     .then((obj) =>{
         rs.json(obj);
     })
@@ -17,7 +15,7 @@ router.get('/', (rq, rs) => {
 });
 
 router.post('/', (rq,rs) =>{
-    blogscontrollers.PostBlogs(rq.body as blogs)
+    comentarioscontrollers.Postcomentarios  (rq.body as comentarios)
     .then((obj) =>{
         if(obj)
         rs.status(201).send();
@@ -30,7 +28,7 @@ router.post('/', (rq,rs) =>{
 });
 
 router.put('/:id', (rq, rs) => {
-    blogscontrollers.UpdateBlogs(rq.params.id, rq.body as blogs)
+    comentarioscontrollers.Updatecomentarios(rq.params.id, rq.body as comentarios)
     .then((obj) => {
         if(obj)
             rs.status(200).send();
@@ -43,7 +41,7 @@ router.put('/:id', (rq, rs) => {
 });
 
 router.delete('/:id', (rq, rs) => {
-    blogscontrollers.DeleteBlogs(rq.body._id)
+    comentarioscontrollers.Deletecomentarios(rq.body._id)
     .then((sucess) => {
         if(sucess)
             rs.status(200).send();
@@ -56,5 +54,4 @@ router.delete('/:id', (rq, rs) => {
 });
 
 export default router;
-
 
