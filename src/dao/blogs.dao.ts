@@ -13,6 +13,7 @@ export const listar = async (): Promise<blogs[]> => {
     await mongo.cliente.close();  
     return rs;
   } catch (error) {
+    console.log(error);
     throw error;
   }
 }

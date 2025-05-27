@@ -14,7 +14,7 @@ app.use(Express.urlencoded({extended:true}));
 app.use(cors());
 app.use('/api/usuarios', usuariosrouter)
 app.use('/api/blogs', blogsrouter)
-app.use('api/blogs', comentariosrouter )
+app.use('/api/comentarios', comentariosrouter )
 
 app.listen(PORT, ()=>{
     console.log(`escuchando el puerto ${PORT}`)
